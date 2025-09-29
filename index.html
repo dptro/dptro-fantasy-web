@@ -20,7 +20,6 @@
       color: #fff;
       padding: 20px;
       flex-shrink: 0;
-      transition: transform 0.3s ease;
     }
 
     .sidebar a {
@@ -61,16 +60,15 @@
       }
 
       .sidebar {
+        display: none;   /* hide sidebar by default */
         width: 100%;
-        transform: translateY(-100%);
-        position: absolute;
-        top: 50px;
-        left: 0;
+        position: relative;
+        background: #111;
+        z-index: 1000;
       }
 
       .sidebar.active {
-        transform: translateY(0);
-        position: relative;
+        display: block;  /* show when toggled */
       }
 
       .content {
@@ -95,7 +93,7 @@
   <!-- Content -->
   <div class="content">
     <h1>Welcome to F1 Fantasy</h1>
-    <p>This is your new responsive homepage with a sidebar that turns into a hamburger menu on mobile.</p>
+    <p>This is your new responsive homepage with a sidebar that becomes a hamburger menu on mobile.</p>
   </div>
 
   <!-- JS for toggle -->
