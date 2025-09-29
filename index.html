@@ -1,30 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>F1 Fantasy League</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Base layout */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #111;
+      color: #fff;
+      padding: 20px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin: 10px 0;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+    }
+
+    /* Content */
+    .content {
+      flex: 1;
+      padding: 20px;
+      background: #f8f8f8;
+    }
+
+    /* Hamburger menu button */
+    .menu-toggle {
+      display: none;
+      background: #111;
+      color: #fff;
+      padding: 15px;
+      cursor: pointer;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .menu-toggle {
+        display: block; /* show button on mobile */
+      }
+
+      .sidebar {
+        width: 100%;
+        transform: translateY(-100%);
+        position: absolute;
+        top: 50px;
+        left: 0;
+      }
+
+      .sidebar.active {
+        transform: translateY(0);
+        position: relative;
+      }
+
+      .content {
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Sidebar -->
-    <nav class="sidebar">
-      <h2>🏎️ F1 Fantasy</h2>
-      <ul>
-        <li><a href="index.html">Dashboard</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="#">Standings</a></li>
-        <li><a href="#">Teams</a></li>
-        <li><a href="#">Stats</a></li>
-      </ul>
-    </nav>
 
-    <!-- Main content -->
-    <main class="content">
-      <h1>Welcome to the F1 Fantasy League</h1>
-      <p>This is where you’ll find dashboards, standings, and stats for our league.</p>
-    </main>
+  <!-- Hamburger button (only shows on mobile) -->
+  <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="#">Standings</a>
+    <a href="#">Stats</a>
   </div>
+
+  <!-- Content -->
+  <div class="content">
+    <h1>Welcome to F1 Fantasy</h1>
+    <p>This is your new responsive homepage with a sidebar that turns into a hamburger menu on mobile.</p>
+  </div>
+
+  <!-- JS for toggle -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
